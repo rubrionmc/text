@@ -1,0 +1,63 @@
+{
+  "test.color.basic": "<yellow>Hello <blue>World</blue>!",
+  "test.color.verbose": "<color:yellow>Hello <color:blue>World</color:blue>!",
+  "test.color.hex": "<color:#FF5555>This is a <color:#55FF55>test!",
+
+  "test.shadow.basic": "<shadow:yellow>Hello <shadow:aqua:0.5>World</shadow>!",
+  "test.shadow.hex": "<shadow:#FF5555>This is a <shadow:#55FF55>test!",
+  "test.shadow.disable": "<!shadow>",
+
+  "test.decoration.bold": "<bold>This is <underlined>important</underlined></bold>!",
+  "test.decoration.italic": "<italic:em>This is italic</italic:em>!",
+  "test.decoration.underlined": "<underlined>Underlined</underlined>",
+  "test.decoration.strikethrough": "<strikethrough>This is struck</strikethrough>",
+  "test.decoration.obfuscated": "<obfuscated>Random</obfuscated>",
+
+  "test.reset.basic": "<yellow><bold>Hello <reset>world!</yellow>",
+
+  "test.click.run_command": "<click:run_command:/seed>Click</click> to show the world seed!",
+  "test.click.copy_to_clipboard": "Click <click:copy_to_clipboard:Haha you suck>this</click> to copy your score!",
+
+  "test.hover.show_text": "<hover:show_text:'<red>test'>TEST",
+
+  "test.keybind.basic": "Press <red><key:key.jump> to jump!",
+
+  "test.translatable.basic": "You should get a <lang:block.minecraft.diamond_block>!",
+  "test.translatable.with_args": "<lang:commands.drop.success.single:'<red>1':'<blue>Stone'>!",
+  "test.translatable.fallback": "You should get a <lang_or:block.minecraft.diamond_block:'Dirt Block'>!",
+
+  "test.insertion.basic": "Shift-click <insert:test>this</insert> to insert!",
+
+  "test.rainbow.basic": "<yellow>Woo: <rainbow>||||||||||||||||||||||||</rainbow>!",
+  "test.rainbow.reverse": "<yellow>Woo: <rainbow:!>||||||||||||||||||||||||</rainbow>!",
+  "test.rainbow.phase": "<yellow>Woo: <rainbow:2>||||||||||||||||||||||||</rainbow>!",
+
+  "test.gradient.basic": "<yellow>Woo: <gradient>||||||||||||||||||||||||</gradient>!",
+  "test.gradient.two_colors": "<yellow>Woo: <gradient:#5e4fa2:#f79459>||||||||||||||||||||||||</gradient>!",
+  "test.gradient.three_colors": "<yellow>Woo: <gradient:#5e4fa2:#f79459:red>||||||||||||||||||||||||</gradient>!",
+
+  "test.transition.basic": "<transition:#00ff00:#ff0000:0>|||||||||</transition>",
+  "test.transition.phase": "<transition:white:black:red:[phase]>Hello world [phase]</transition>",
+
+  "test.font.basic": "Nothing <font:uniform>Uniform <font:alt>Alt</font> Uniform",
+  "test.font.custom": "<font:myfont:custom_font>Uses a custom font</font>",
+
+  "test.newline.basic": "Let me insert a <newline>line break here.",
+  "test.newline.hover": "<hover:show_text:'<red>Hover with a<newline><green>line break'>Text with<newline>line break</hover>",
+
+  "test.selector.basic": "Hello <selector:@e[limit=5]>, I'm <selector:@s>!",
+
+  "test.score.basic": "You have won <score:rymiel:gamesWon/> games!",
+
+  "test.nbt.basic": "Your health is <nbt:entity:'@s':Health/>",
+
+  "test.pride.basic": "Happy <pride>pride month</pride>!",
+  "test.pride.trans": "Kyori supports <pride:trans>trans rights</pride>!",
+
+  "test.sprite.basic": "Look at my <sprite:blocks:block/stone>!",
+  "test.sprite.item": "This item costs 10 x <sprite:items:item/porkchop>.",
+
+  "test.head.basic": "My favorite dev is <head:1f085b2d-9548-4159-a8c7-f3ccdf0c2054>.",
+  "test.head.entity": "Do you prefer <head:entity/player/wide/steve> Steve or <head:entity/player/slim/alex> Alex?",
+  "test.head.outer_layer": "Thanks <head:Strokkur24:false> for the docs!"
+}
