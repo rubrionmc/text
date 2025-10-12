@@ -42,7 +42,7 @@ public class TranslationManager {
         String def = "en_US";
 
         if (source == null || source.isBlank()) {
-            System.err.println("[TranslationManager] No lang.direction specified in config.yml");
+            TextApiProvider.get().logger().error("No lang.direction specified in config.yml");
             return;
         }
 

@@ -40,6 +40,7 @@ public class HtmlSerializer implements TextAdapter.ForString {
 
     @Override
     public Component from(String html) {
+        // This is a simplified implementation that strips HTML codes
         return Component.text(stripHtmlTags(html));
     }
 

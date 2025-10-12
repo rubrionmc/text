@@ -45,7 +45,6 @@ public class AnsiSerializer implements TextAdapter.ForString {
 
     @Override
     public Component from(String ansi) {
-        // Parsing ANSI codes back to components is complex
         // This is a simplified implementation that strips ANSI codes
         return Component.text(stripAnsiCodes(ansi));
     }
