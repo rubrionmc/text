@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rub-api/rub-text.api.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rub-api/rub-text.api.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/rub-common/rub-text.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rub-common/rub-text.common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rub-common/rub-text.common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/rub-common/rub-text.common.test.iml" />
     </modules>
   </component>
 </project>
