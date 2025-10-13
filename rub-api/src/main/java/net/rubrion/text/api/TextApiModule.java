@@ -13,10 +13,8 @@ package net.rubrion.text.api;
 import net.kyori.adventure.text.Component;
 import net.rubrion.common.api.api.ApiModule;
 import net.rubrion.text.api.adapter.TextAdapter;
-import net.rubrion.text.api.lang.Label;
-import net.rubrion.text.api.lang.Translator;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.rubrion.text.api.lang.*;
+import org.jetbrains.annotations.*;
 
 import java.util.Locale;
 
@@ -31,6 +29,7 @@ public interface TextApiModule extends ApiModule {
     TextAdapter<String> adapterFor(String key);
 
     Label createLabel(String key, @Nullable String text, @NotNull TextAdapter<String> adapter, Translator translator);
+
     Label createLabel(String label);
 
 }

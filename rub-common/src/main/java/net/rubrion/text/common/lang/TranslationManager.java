@@ -1,18 +1,14 @@
 package net.rubrion.text.common.lang;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import net.kyori.adventure.text.Component;
 import net.rubrion.text.api.TextApiProvider;
 import net.rubrion.text.api.adapter.TextAdapter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import net.rubrion.text.common.TextBootstrap;
+import org.jetbrains.annotations.*;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,8 +34,8 @@ public class TranslationManager {
     }
 
     private void loadAll() {
-        String source = ".lang"; // TODO: move this to a config
-        String def = "en_US";
+        String source = TextBootstrap.langSource.get();
+        String def = TextBootstrap.defLangCode.get();
 
         if (source == null || source.isBlank()) {
             TextApiProvider.get().logger().error("No lang.direction specified in config.yml");
@@ -55,15 +51,14 @@ public class TranslationManager {
                 loadFromPath(source);
             }
         } catch (Exception e) {
-            TextApiProvider.get().logger().error("Failed to load translations: {}", e.getMessage(), e);
+            throw new NoSuchElementException("Failed to load translations: " + e.getMessage(), e);
         }
     }
 
     private void loadFromPath(String basePath) throws IOException {
         Path dir = Paths.get(basePath);
         if (!Files.exists(dir)) {
-            TextApiProvider.get().logger().error("Directory not found: {}", dir.toAbsolutePath());
-            return;
+            throw new NoSuchFileException("Directory not found: " + dir.toAbsolutePath());
         }
 
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.json")) {
@@ -81,7 +76,7 @@ public class TranslationManager {
                     translations.put(locale, props);
                     TextApiProvider.get().logger().error("Loaded locale {} from {}", locale, path.getFileName());
                 } catch (JsonSyntaxException e) {
-                    TextApiProvider.get().logger().error("Invalid JSON in {}: {}", path.getFileName(), e.getMessage());
+                    throw new JsonSyntaxException("Invalid JSON in " + path.getFileName() + ": " + e.getMessage(), e);
                 }
             }
         }
@@ -102,7 +97,7 @@ public class TranslationManager {
                 translations.put(Locale.forLanguageTag(lang.replace('_', '-')), props);
                 System.out.println("[TranslationManager] Loaded remote locale " + lang + " from " + urlString);
             } catch (IOException e) {
-                System.err.println("[TranslationManager] Failed to load " + urlString + ": " + e.getMessage());
+                throw new RuntimeException("Failed to load " + urlString + ": " + e.getMessage(), e);
             }
         }
     }

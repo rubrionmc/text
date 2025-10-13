@@ -3,10 +3,8 @@ package net.rubrion.text.api.adapter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import net.rubrion.text.api.color.ColorTypeRegistry;
 import net.rubrion.text.api.TextApiProvider;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.*;
 
 public interface TextSerializer {
 
@@ -30,12 +28,12 @@ public interface TextSerializer {
 
         @Override
         public @NotNull Component from(String s) {
-            return s == null ? Component.empty() : serializer.deserialize(ColorTypeRegistry.replaceLegacy(s, c));
+            return s == null ? Component.empty() : serializer.deserialize(s);
         }
 
         @Override
         public @NotNull String to(Component component) {
-            return component == null ? "" : ColorTypeRegistry.replaceLegacyBack(serializer.serialize(component), c);
+            return component == null ? "" : serializer.serialize(component);
         }
 
     }
@@ -45,12 +43,12 @@ public interface TextSerializer {
 
         @Override
         public @NotNull Component from(String s) {
-            return s == null ? Component.empty() : serializer.deserialize(ColorTypeRegistry.replaceMini(s, o, c));
+            return s == null ? Component.empty() : serializer.deserialize(s);
         }
 
         @Override
         public @NotNull String to(Component component) {
-            return component == null ? "" : ColorTypeRegistry.replaceMiniBack(serializer.serialize(component), o, c);
+            return component == null ? "" : serializer.serialize(component);
         }
     }
 
@@ -59,12 +57,12 @@ public interface TextSerializer {
 
         @Override
         public @NotNull Component from(String s) {
-            return s == null ? Component.empty() : serializer.from(ColorTypeRegistry.replaceMini(s));
+            return s == null ? Component.empty() : serializer.from(s);
         }
 
         @Override
         public @NotNull String to(Component component) {
-            return component == null ? "" : ColorTypeRegistry.replaceMiniBack(serializer.to(component));
+            return component == null ? "" : serializer.to(component);
         }
 
     }
@@ -75,12 +73,12 @@ public interface TextSerializer {
 
         @Override
         public @NotNull Component from(String s) {
-            return s == null ? Component.empty() : serializer.from(ColorTypeRegistry.replaceMini(s));
+            return s == null ? Component.empty() : serializer.from(s);
         }
 
         @Override
         public @NotNull String to(Component component) {
-            return component == null ? "" : ColorTypeRegistry.replaceMiniBack(serializer.to(component));
+            return component == null ? "" : serializer.to(component);
         }
 
     }
@@ -90,12 +88,12 @@ public interface TextSerializer {
 
         @Override
         public @NotNull Component from(String s) {
-            return s == null ? Component.empty() : serializer.from(ColorTypeRegistry.replaceMini(s));
+            return s == null ? Component.empty() : serializer.from(s);
         }
 
         @Override
         public @NotNull String to(Component component) {
-            return component == null ? "" : ColorTypeRegistry.replaceMiniBack(serializer.to(component));
+            return component == null ? "" : serializer.to(component);
         }
 
     }

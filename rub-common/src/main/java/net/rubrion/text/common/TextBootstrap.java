@@ -3,8 +3,9 @@ package net.rubrion.text.common;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import net.rubrion.common.api.id.NamespacedId;
-import net.rubrion.config.api.field.ConfigField;
 
+import net.rubrion.config.api.config.Config;
+import net.rubrion.config.api.field.Field;
 import net.rubrion.text.api.TextApiModule;
 import net.rubrion.text.api.adapter.TextAdapter;
 
@@ -28,12 +29,23 @@ public class TextBootstrap implements TextApiModule {
     @Getter private final String direction;
     private Logger logger;
 
+    public static Field<String> langSource;
+    public static Field<String> defLangCode;
+
     public TextBootstrap(NamespacedId loader, TextAdapter<String> reader, String direction) {
         this.loader = loader;
         this.reader = reader;
         this.direction = direction;
 
         TranslationManager.getInstance().reload();
+
+        Config config = Config.read("config.yml");
+
+        TextBootstrap.langSource = config.
+                getField("lang.source", String.class);
+
+        TextBootstrap.defLangCode = config.
+                getField("lang.def-code", String.class);
     }
 
     @Override

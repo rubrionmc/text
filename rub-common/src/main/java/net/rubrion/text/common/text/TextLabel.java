@@ -6,10 +6,8 @@ import net.rubrion.text.api.adapter.TextAdapter;
 import net.rubrion.text.api.lang.Label;
 import net.rubrion.text.api.lang.Translator;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
-import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
