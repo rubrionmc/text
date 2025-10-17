@@ -23,6 +23,7 @@ allprojects {
         maven("https://libraries.minecraft.net")
         maven("https://repo.codemc.io/repository/maven-releases/")
         maven("https://repo.codemc.io/repository/maven-snapshots/")
+        maven("https://repo.codemc.io/repository/maven-snapshots/")
         maven("https://rubrionmc.github.io/repository/")
     }
 }
@@ -42,6 +43,15 @@ subprojects {
 
     tasks.withType<Jar> {
         archiveBaseName.set("${rootProject.name}-${project.name}")
+
+        val dependencies = configurations.runtimeClasspath.get()
+        from({
+            dependencies.map { if (it.isDirectory) it else zipTree(it) }
+        })
+
+        exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 
     publishing {
@@ -56,7 +66,7 @@ subprojects {
 
         repositories {
             maven {
-                name = "leycm-repo"
+                name = "rub-repo"
                 val repoDir = rootProject.projectDir.parentFile.resolve("repository")
                 url = uri(repoDir)
             }
@@ -85,6 +95,6 @@ tasks.register("packets") {
                 }
             }
 
-        println("[X] All plugin builds finished and moved to /out/")
+        println("[ ] All plugin builds finished and moved to /out/")
     }
 }
